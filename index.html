@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DIJELAJAH DONGGALA</title>
+    <meta name="description" content="Eksplorasi situs bersejarah Kota Tua Donggala melalui peta interaktif, panorama visual 360 derajat, audio transkripsi sejarah, linimasa serta media pembelajaran budaya lokal" />
+    <meta property="og:title" content="DIJELAJAH DONGGALA" />
+    <meta property="og:description" content="Eksplorasi situs bersejarah Kota Tua Donggala melalui peta interaktif, panorama visual 360 derajat, audio transkripsi sejarah, linimasa serta media pembelajaran budaya lokal" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400&family=Cinzel:wght@600;700;800&display=swap" rel="stylesheet">
+    <script>
+      // iOS / Safari Storage Access Helper for iFrame embedded preview
+      if (typeof document !== 'undefined' && document.hasStorageAccess) {
+        document.hasStorageAccess().then(function(hasAccess) {
+          if (!hasAccess && document.requestStorageAccess) {
+            window.addEventListener('click', function() {
+              document.requestStorageAccess().catch(function() {});
+            }, { once: true });
+          }
+        }).catch(function() {});
+      }
+    </script>
+  </head>
+  <body class="bg-[#faf8f5] text-[#1c1917] antialiased selection:bg-[#c85a32] selection:text-white">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

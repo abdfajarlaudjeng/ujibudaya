@@ -1,0 +1,203 @@
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+:root {
+  --c-bg: #faf8f5;
+  --c-bg-card: #ffffff;
+  --c-text: #1c1917;
+  --c-text-muted: #57534e;
+  --c-terracotta: #c85a32;
+  --c-terracotta-hover: #b8502a;
+  --c-coastal-blue: #0f4c81;
+  --c-coastal-blue-hover: #0a3962;
+  --c-gallery-border: rgba(28, 25, 23, 0.08);
+  --f-serif: 'Playfair Display', Georgia, serif;
+  --f-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+@layer base {
+  body {
+    font-family: var(--f-sans);
+    background-color: #faf8f5;
+    color: #1c1917;
+  }
+
+  h1, h2, h3, .font-serif-heading {
+    font-family: var(--f-serif);
+  }
+
+  .font-display {
+    font-family: 'Cinzel', serif;
+  }
+}
+
+/* Digital Gallery Theme Utilities */
+.gallery-hero-bg {
+  background: 
+    radial-gradient(ellipse at 70% 20%, rgba(200, 90, 50, 0.07) 0%, transparent 50%),
+    radial-gradient(ellipse at 20% 80%, rgba(15, 76, 129, 0.08) 0%, transparent 55%),
+    #faf8f5;
+  position: relative;
+}
+
+.gallery-grid-pattern {
+  background-image: radial-gradient(rgba(28, 25, 23, 0.08) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.gallery-panel {
+  background: #ffffff;
+  border: 1px solid rgba(28, 25, 23, 0.08);
+  border-radius: 20px;
+  box-shadow: 0 4px 20px -4px rgba(28, 25, 23, 0.04);
+}
+
+.gallery-panel-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery-panel-hover:hover {
+  border-color: rgba(200, 90, 50, 0.35);
+  box-shadow: 0 16px 36px -8px rgba(28, 25, 23, 0.08), 0 0 20px -4px rgba(200, 90, 50, 0.12);
+  transform: translateY(-2px);
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(28, 25, 23, 0.08);
+  border-radius: 20px;
+  box-shadow: 0 8px 30px -6px rgba(28, 25, 23, 0.04);
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-panel-hover:hover {
+  background: #ffffff;
+  border-color: rgba(200, 90, 50, 0.35);
+  box-shadow: 0 16px 40px -10px rgba(28, 25, 23, 0.09), 0 0 24px -6px rgba(200, 90, 50, 0.14);
+  transform: translateY(-2px);
+}
+
+.glass-modal {
+  background: rgba(253, 252, 250, 0.98);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(200, 90, 50, 0.2);
+  border-radius: 24px;
+}
+
+.poi-marker {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  background: #c85a32;
+  border-radius: 50%;
+  box-shadow: 0 0 16px #c85a32;
+  cursor: pointer;
+}
+
+.poi-marker::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border: 1.5px solid #c85a32;
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: pulse-ring 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Smartphone Mockup Stylings */
+.phone-mockup-frame {
+  position: relative;
+  border-radius: 40px;
+  background: #1c1917;
+  padding: 10px;
+  box-shadow: 
+    0 25px 60px -15px rgba(28, 25, 23, 0.25),
+    0 0 0 1px rgba(28, 25, 23, 0.1),
+    inset 0 1px 2px rgba(255, 255, 255, 0.2);
+}
+
+.phone-mockup-screen {
+  border-radius: 32px;
+  overflow: hidden;
+  background: #0d0c0b;
+  position: relative;
+}
+
+/* Custom aesthetic scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #faf8f5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d6d3cd;
+  border-radius: 9999px;
+  border: 1px solid rgba(28, 25, 23, 0.08);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #c85a32;
+}
+
+/* Pulse animation for 360 hotspots */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.2;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Leaflet Container and Popup Customizations */
+.leaflet-container {
+  font-family: var(--f-sans) !important;
+  background-color: #f5efe6 !important;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 10 !important;
+}
+
+.donggala-leaflet-marker,
+.donggala-arts-marker {
+  background: transparent !important;
+  border: none !important;
+}
+
+.donggala-heritage-popup .leaflet-popup-content-wrapper {
+  background: #ffffff !important;
+  border-radius: 16px !important;
+  box-shadow: 0 20px 35px -8px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(0, 0, 0, 0.08) !important;
+  padding: 6px !important;
+}
+
+.donggala-heritage-popup .leaflet-popup-content {
+  margin: 6px !important;
+  line-height: 1.4 !important;
+}
+
+.donggala-heritage-popup .leaflet-popup-tip {
+  background: #ffffff !important;
+}
+
+
