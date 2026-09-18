@@ -1,17 +1,19 @@
 {
   "version": 2,
-  "rewrites": [
+  "builds": [
     {
-      "source": "/api/(.*)",
-      "destination": "/api/index"
+      "src": "server.ts",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "server.ts"
     },
     {
-      "source": "/download-html",
-      "destination": "/api/index"
-    },
-    {
-      "source": "/((?!api|download-html).*)",
-      "destination": "/index.html"
+      "src": "/(.*)",
+      "dest": "server.ts"
     }
   ]
 }
