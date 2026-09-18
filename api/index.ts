@@ -1,2 +1,3 @@
-import app from '../server.ts'; // Sesuaikan dengan jalur file server Express Anda
+import app from '../server';
+
 export default app;
